@@ -9,6 +9,7 @@ const regex = {
 };
 
 const equivalentCharsGroups = [
+  ['a', 'e', 'i', 'o', 'u'],
   ['c', 'g', 'j', 'k', 'q', 's', 'x', 'y', 'z'],
   ['b', 'f', 'p', 'v', 'w'],
   ['d', 't'],

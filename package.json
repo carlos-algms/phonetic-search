@@ -5,7 +5,7 @@
   "author": "Carlos A. Gomes <carlos.algms@gmail.com>",
   "main": "index.js",
   "scripts": {
-    "test": ""
+    "test": "node node_modules/jasmine-node/bin/jasmine-node test/specs/"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,7 @@
   "homepage": "https://github.com/carlos-algms/phonetic-search#readme",
   "devDependencies": {
     "eslint": "^2.7.0",
-    "eslint-config-airbnb": "^7.0.0"
+    "eslint-config-airbnb": "^7.0.0",
+    "jasmine-node": "^1.14.5"
   }
 }
