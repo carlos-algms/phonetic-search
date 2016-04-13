@@ -21,10 +21,7 @@ function phoneticSearch(words, dictionary) {
     const equivalents = matchEquivalentWords(word, dictionary);
 
     if (equivalents.length) {
-      results.push({
-        word,
-        equivalents
-      });
+      results.push({ word, equivalents });
     }
 
     return results;
@@ -33,17 +30,26 @@ function phoneticSearch(words, dictionary) {
 
 
 function matchEquivalentWords(word, dictionary) {
-  const cleanWord = discardChars(removeNonAlphaChars(word));
+  const cleanWord = wordCleaner(word);
   const phoneticRegex = createPhoneticRegex(cleanWord);
 
   if (! phoneticRegex) {
     return [];
   }
 
-  return dictionary.filter((dictionaryWord) => {
-    const cleanDictionaryWord = discardChars(removeNonAlphaChars(dictionaryWord));
-    return phoneticRegex.test(cleanDictionaryWord);
-  });
+  return filterDictionary(phoneticRegex, dictionary);
+}
+
+
+function filterDictionary(phoneticRegex, dictionary) {
+  return dictionary.filter((dictionaryWord) =>
+    phoneticRegex.test(wordCleaner(dictionaryWord))
+  );
+}
+
+
+function wordCleaner(word) {
+  return removeDupes(discardChars(removeNonAlphaChars(word)));
 }
 
 
@@ -54,6 +60,11 @@ function removeNonAlphaChars(word) {
 
 function discardChars(word) {
   return word[0] + word.slice(1).replace(regex.discardableChars, '');
+}
+
+
+function removeDupes(word) {
+  return word.replace(/(.)\1+/gi, '$1');
 }
 
 
