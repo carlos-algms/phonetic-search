@@ -4,11 +4,11 @@ module.exports = phoneticSearch;
 
 const regex = {
   nonAlfa: /[^a-z]/gi,
-  discardableChars: /[aeihouwy]/gi
+  discardableChars: /[aeihouwy]/gi,
+  dupes: /(.)\1+/gi
 };
 
 const equivalentCharsGroups = [
-  ['a', 'e', 'i', 'o', 'u'],
   ['c', 'g', 'j', 'k', 'q', 's', 'x', 'y', 'z'],
   ['b', 'f', 'p', 'v', 'w'],
   ['d', 't'],
@@ -64,7 +64,7 @@ function discardChars(word) {
 
 
 function removeDupes(word) {
-  return word.replace(/(.)\1+/gi, '$1');
+  return word.replace(regex.dupes, '$1');
 }
 
 
