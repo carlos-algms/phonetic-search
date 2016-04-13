@@ -1,0 +1,14 @@
+{
+  "env": {
+    "node": true,
+    "es6": true,
+    "mocha": true,
+    "jasmine": true
+  },
+  "extends": "airbnb/base",
+  "globals": {
+  },
+  "rules": {
+    "comma-dangle": true
+  }
+}
