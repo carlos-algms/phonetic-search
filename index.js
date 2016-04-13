@@ -1,10 +1,10 @@
 'use strict';
-const linereader = require('./source/linereader');
+const stdInputReader = require('./source/stdInputReader');
 const phoneticSearch = require('./source/phoneticSearch');
 
 const words = process.argv.slice(2);
 
-linereader().then((dictionary) => {
+stdInputReader().then((dictionary) => {
   const results = phoneticSearch(words, dictionary);
 
   results.forEach((result) => {

@@ -1,10 +1,10 @@
 'use strict';
 const readline = require('readline');
 
-module.exports = lineReader;
+module.exports = stdInputReader;
 
 
-function lineReader() {
+function stdInputReader() {
   return new Promise(readLines);
 }
 
@@ -21,7 +21,6 @@ function readLines(resolve) {
 function _createLineReader() {
   return readline.createInterface({
     input: process.stdin,
-    output: process.stdout,
     terminal: false
   });
 }
